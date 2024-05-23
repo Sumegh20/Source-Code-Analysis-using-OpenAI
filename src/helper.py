@@ -1,30 +1,54 @@
 import os
 from git import Repo
-from langchain.document_loaders.generic import GenericLoader
 from langchain.document_loaders.parsers import LanguageParser
 from langchain.text_splitter import Language
 from langchain.text_splitter import RecursiveCharacterTextSplitter
-from langchain.embeddings.openai import OpenAIEmbeddings
-from langchain.vectorstores import FAISS
 from langchain.schema.runnable import RunnablePassthrough
 from langchain.schema.output_parser import StrOutputParser
 from langchain.prompts import ChatPromptTemplate
-from langchain.chat_models import ChatOpenAI
-from parms import database_dir
+# from langchain.chat_models import ChatOpenAI
+# from langchain.embeddings.openai import OpenAIEmbeddings
+# from langchain.vectorstores import FAISS
+# from langchain.document_loaders.generic import GenericLoader
+
+from langchain_community.chat_models import ChatOpenAI
+from langchain_community.document_loaders.generic import GenericLoader
+from langchain_community.embeddings import OpenAIEmbeddings
+from langchain_community.vectorstores import FAISS
+
+from params import database_dir, git_repo_dir
+from constant import file_extensions, file_language
 
 #clone any github repositories 
-def repo_ingestion(repo_url):
-    os.makedirs("repo", exist_ok=True)
-    repo_path = "repo/"
-    Repo.clone_from(repo_url, to_path=repo_path)
+def repo_ingestion(repo_url, git_repo_dir):
+    try:
+        os.makedirs(git_repo_dir, exist_ok=True)
+        Repo.clone_from(repo_url, to_path=git_repo_dir)
+
+        return True #"SUCCESS"
+    except Exception as e:
+        return False #"FAILED"
+
+# Create suffixes from language
+def get_suffixes_from_language(language):
+    suffixes = file_extensions.get(language, None)
+    return suffixes
+
+
+def get_language_from_language(language):
+    Languages = file_language.get(language, None)
+    return Languages
 
 
 #Loading repositories as documents
-def load_repo(repo_path):
+def create_document_from_repo(repo_path, language):
+    suffixes = get_suffixes_from_language(language)
+    Languages = get_language_from_language(language)
+
     loader = GenericLoader.from_filesystem(repo_path,
                                         glob = "**/*",
-                                       suffixes=[".py"],
-                                       parser = LanguageParser(language=Language.PYTHON, parser_threshold=500)
+                                       suffixes=suffixes,
+                                       parser = LanguageParser(language=Languages, parser_threshold=500)
                                         )
     documents = loader.load()
     return documents

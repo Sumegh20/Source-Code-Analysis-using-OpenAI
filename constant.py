@@ -1,0 +1,57 @@
+from langchain.text_splitter import Language
+
+file_extensions = {
+"CPP": [".cpp"],
+"GO": [".go"],
+"JAVA": [".java"],
+"KOTLIN": [".kt"],
+"JS": [".js"],
+"TS": [".ts"],
+"PHP": [".php"],
+"PROTO": [".proto"],
+"PYTHON": [".py"],
+"RST": [".rst"],
+"RUBY": [".rb"],
+"RUST": [".rs"],
+"SCALA": [".scala"],
+"SWIFT": [".swift"],
+"MARKDOWN": [".md"],
+"LATEX": [".tex"],
+"HTML": [".html"],
+"SOL": [".sol"],
+"CSHARP": [".cs"],
+"COBOL": [".cob"],
+"C": [".c"],
+"LUA": [".lua"],
+"PERL": [".pl"],
+"HASKELL": [".hs"]
+}
+
+file_language = {
+"CPP": Language.CPP,
+"GO": Language.GO,
+"JAVA": Language.JAVA,
+"KOTLIN": Language.KOTLIN,
+"JS": Language.JS,
+"TS": Language.TS,
+"PHP": Language.PHP,
+"PROTO": Language.PROTO,
+"PYTHON": Language.PYTHON,
+"RST": Language.RST,
+"RUBY": Language.RUBY,
+"RUST": Language.RUST,
+"SCALA": Language.SCALA,
+"SWIFT": Language.SWIFT,
+"MARKDOWN": Language.MARKDOWN,
+"LATEX": Language.LATEX,
+"HTML": Language.HTML,
+"SOL": Language.SOL,
+"CSHARP": Language.CSHARP,
+"COBOL": Language.COBOL,
+"C": Language.C,
+"LUA": Language.LUA,
+"PERL": Language.PERL,
+"HASKELL": Language.HASKELL,
+}
+
+language_options_list = ["CPP", "GO", "JAVA", "KOTLIN", "JS", "TS", "PHP", "PROTO", "PYTHON", "RST", "RUBY", "RUST", "SCALA", "SWIFT", "MARKDOWN", "LATEX", "HTML", "SOL", "CSHARP", "COBOL","C", "LUA", "PERL", "HASKELL"]
