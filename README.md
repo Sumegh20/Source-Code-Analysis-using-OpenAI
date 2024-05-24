@@ -12,7 +12,9 @@ git clone https://github.com/Sumegh20/code-analyzer.git
 bash init_setup.sh
 ```
 ### STEP 03- Create a .env file in the root directory and add your OPENAI_API_KEY credentials as follows:
+```
 OPENAI_API_KEY = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+```
 
 ### STEP 04- Activate the virtual environment
 ```
