@@ -13,7 +13,7 @@ st.header("Analyze your Code ith OpenAI")
 
 with st.sidebar:
     st.title("Menu:")
-    github_url = st.text_input('Enter your github repo link')
+    github_url = st.text_input('Enter the github repo link')
     language = st.selectbox("Select the programming language", options=language_options_list)
 
     if st.button("Submit & Process"):
