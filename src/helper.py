@@ -18,6 +18,11 @@ from langchain_community.vectorstores import FAISS
 
 from params import database_dir, git_repo_dir
 from constant import file_extensions, file_language
+from dotenv import load_dotenv
+
+load_dotenv()
+os.environ["OPENAI_API_KEY"] = os.environ.get('OPENAI_API_KEY')
+os.environ["GOOGLE_API_KEY"] = os.environ.get('GOOGLE_API_KEY')
 
 #clone any github repositories 
 def repo_ingestion(repo_url, git_repo_dir):
