@@ -5,7 +5,7 @@
 
 ### STEP 01- Clone the repository
 ```
-git clone https://github.com/Sumegh20/code-analyzer.git
+git clone https://github.com/Sumegh20/Source-Code-Analysis-using-OpenAI.git
 ```
 ### STEP 02- Create virtual environment & Install requirements after opening the repository
 ```
